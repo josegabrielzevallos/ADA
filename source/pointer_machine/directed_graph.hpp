@@ -16,7 +16,7 @@ class Node {
  public:
   typedef Type data_type;
 
-  Node() : data_(nullptr), forward_(nullptr), out_ptrs_size_(0) {}
+ // Node() : data_(nullptr), forward_(nullptr), out_ptrs_size_(0) {}
 
   Node(data_type const& data, std::size_t const& out_ptrs_size)
       : data_(new data_type(data)), out_ptrs_size_(out_ptrs_size) {
@@ -103,9 +103,9 @@ class DirectedGraph {
 
   virtual ~DirectedGraph() {}
 
-  Node* get_root_ptr() { return root_ptr_; }
+  Node* get_root_ptr() { return root_ptr_; }//retorna el la raiz
 
-  Node get_root() { return *root_ptr_; }
+  Node get_root() { return *root_ptr_; }//retorna el valor de la raiz
 
   /**
    *  \brief Attachs two nodes
