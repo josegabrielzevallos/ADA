@@ -50,24 +50,21 @@ void test_directed_graph() {
 ///*
 void test_directed_graph() {
 
-	ADE :: Persistence :: PartialDirectedGraph<int> my_graph(3,4,5);
+	ADE :: Persistence :: PartialDirectedGraph<int> my_graph(1,4,5);
 	ADE :: Persistence :: PartialNode<int> *root_ptr =my_graph.get_root_ptr();
 	
-	std::cout<< "Ndata root: "<< *root_ptr->data_ << std::endl;
+	std::cout<< "Dato de la RAIZ: "<< *root_ptr->data_ << std::endl;
 	ADE:: Persistence :: PartialNode<int>* inserted_node_ptr = my_graph.insert_vertex(4, root_ptr, 0);
-	//std::cout<< "rooTest forward version: 1 posisicion[0] = " << *(*root_ptr)[{0,1}].data_<< std::endl;  
-	std::cout<< "Ndata nextroot: "<< *inserted_node_ptr->data_ << std::endl;
-	ADE:: Persistence :: PartialNode<int>* Ptr_1 = my_graph.insert_vertex(7, root_ptr, 0);
-	ADE:: Persistence :: PartialNode<int>* Ptr_2 = my_graph.insert_vertex(11, root_ptr, 0);
-	ADE:: Persistence :: PartialNode<int>* Ptr_3 = my_graph.insert_vertex(13, Ptr_2, 1);
-	//ADE:: Persistence :: PartialNode<int> retrived_node = (*root_ptr)[{0,2}]; 
-	//std::cout << "Next Value: " << *retrived_node.data_ << std::endl;
+	//////////////////////////////////////////////////////////////////////////////
+	std::cout<<"Next RAIZ: "<< *inserted_node_ptr->data_ << std::endl;
+	ADE:: Persistence :: PartialNode<int>* Ptr_1 = my_graph.insert_vertex(5, root_ptr, 0);
+	ADE:: Persistence :: PartialNode<int>* Ptr_2 = my_graph.insert_vertex(8, root_ptr, 0);
+	////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	
-	std::cout<< "rooTest forward version: 1 posisicion[0] = " << *(*root_ptr)[{0,1}].data_<< std::endl;  
-	std::cout<< "rooTest forward version: 2 posisicion[0] = " << *(*root_ptr)[{0,2}].data_<< std::endl;
-	std::cout<< "rooTest forward version: 3 posisicion[0] = " << *(*root_ptr)[{0,3}].data_<< std::endl;
-	ADE:: Persistence :: PartialNode<int> retrived_node =(*root_ptr)[{0,2}];
-	std::cout<< "next to ptr2 version 5 posisicion[1] = " << *(*root_ptr)[{0,3}][{1,5}].data_<< std::endl; 
+	std::cout<< "version: 1 posisicion[0] = " << *(*root_ptr)[{0,1}].data_<< std::endl;  
+	std::cout<< "version: 2 posisicion[0] = " << *(*root_ptr)[{0,2}].data_<< std::endl;
+	
 }
 //*/
 int main() {

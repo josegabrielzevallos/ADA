@@ -81,13 +81,13 @@ class PartialNode : public Node<Type>{
   std::vector<Node<data_type>> Table;
   std::vector<int> version;
   /////////////////////////////////////////////////////////////
-  data_type* data_;
+  //data_type* data_;
   std::size_t out_ptrs_size_;
   PartialNode** forward_;
 
   std::size_t in_ptrs_size_;
-  std::size_t current_modifications_size_;
-  std::size_t current_back_pointer_size_;
+  //std::size_t current_modifications_size_;
+  //std::size_t current_back_pointer_size_;
 
   PartialNode** backward_;
   // TODO: Table mods, 2 * in_ptrs_size_
@@ -137,20 +137,17 @@ class PartialDirectedGraph : public DirectedGraph<Type, Node> {
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
   private:
-  Node* insert_V(data_type const data, Node* u, std::size_t position, unsigned int version_)
+  Node* insertarV(data_type const data, Node* u, std::size_t position, unsigned int version_)
   {
 	  Node* new_node = new Node(data, DirectedGraph<Type, Node>::out_ptrs_size_,in_ptrs_size_);
 	  u->version[u->modificaciones] = version_;
 	  if(u->modificaciones>0)
 		  u->Table[(u->modificaciones)] = u->Table[(u->modificaciones)-1];
-	  //std::cout<<u->c_M<<std::endl;
 	  new_node->backward_[position] = u;    
-	  //Node ** tmp =&(u->Table[u->c_M].second.forward_[position]);
 	  u->Table[(u->modificaciones)].forward_[position] = new_node;
 	  (u->modificaciones)++; 
-	  //return dynamic_cast<Node*>(u->Table[u->c_M].se->forward_[position]);
 	  return dynamic_cast<Node*>(u->Table[u->modificaciones-1].forward_[position]);
-	  //return new_node;  
+	    
   } 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +156,7 @@ class PartialDirectedGraph : public DirectedGraph<Type, Node> {
   Node* insert_vertex(data_type const data, Node* u, std::size_t position, unsigned int version_){
 	  if(u->modificaciones < in_ptrs_size_*2)
 	  {
-		  return insert_V(data, u, position, version_);
+		  return insertarV(data, u, position, version_);
 	  } 
 	  else
 	  {
@@ -171,7 +168,7 @@ class PartialDirectedGraph : public DirectedGraph<Type, Node> {
 				  add_edge(u->backward_[i],new_u,i);
 			  }
 		  }
-		  return insert_V(data,new_u, position,version_);
+		  return insertarV(data,new_u, position,version_);
 	  }         
   }
 	  

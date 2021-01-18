@@ -19,8 +19,8 @@ namespace ADE {
 		
 		Node(data_type data, std::size_t const& out_ptrs_size)
 			: data_(new data_type(data)),
-			out_ptrs_size_(out_ptrs_size),
-			forward_(new Node<Type>*[out_ptrs_size]()) {}
+			out_ptrs_size_(out_ptrs_size){
+			forward_=new Node<Type>*[out_ptrs_size](); }
 		virtual ~Node() {}	
 		//data_type get_data() { return *data_; }
 		

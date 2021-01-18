@@ -16,9 +16,9 @@ class Node {
  public:
   typedef Type data_type;
 
- // Node() : data_(nullptr), forward_(nullptr), out_ptrs_size_(0) {}
+  Node() : data_(nullptr), forward_(nullptr), out_ptrs_size_(0) {}
 
-  Node(data_type const& data, std::size_t const& out_ptrs_size)
+  Node(data_type const& data, std::size_t const& out_ptrs_size)// inicializo los valores
       : data_(new data_type(data)), out_ptrs_size_(out_ptrs_size) {
     forward_ = new Node<Type>*[out_ptrs_size]();
   }
